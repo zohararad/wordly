@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   #acts_as_taggable_on :tags
 
   belongs_to :author
-  #has_many :comments
+  has_many :comments
   #has_and_belongs_to_many :channels
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630095707) do
+ActiveRecord::Schema.define(:version => 20120630095708) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,6 +50,22 @@ ActiveRecord::Schema.define(:version => 20120630095707) do
 
   add_index "authors", ["email"], :name => "index_authors_on_email", :unique => true
   add_index "authors", ["reset_password_token"], :name => "index_authors_on_reset_password_token", :unique => true
+
+  create_table "comments", :force => true do |t|
+    t.integer  "post_id",                                         :null => false
+    t.integer  "author_id"
+    t.string   "author_name",    :limit => 100,                   :null => false
+    t.string   "author_email",   :limit => 60
+    t.string   "author_website", :limit => 100
+    t.string   "author_ip",      :limit => 100,                   :null => false
+    t.text     "comment",                                         :null => false
+    t.string   "hierarchy",      :limit => 2048, :default => "0", :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
+  end
+
+  add_index "comments", ["author_id"], :name => "index_comments_on_author_id"
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
 
   create_table "posts", :force => true do |t|
     t.string   "post_title",    :limit => 512,                       :null => false
