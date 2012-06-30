@@ -8,4 +8,12 @@ class Author < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :website, :about, :meta, :remember_me
   # attr_accessible :title, :body
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
+
+  def to_s
+    full_name
+  end
 end
