@@ -1,6 +1,6 @@
 class CreateComments < ActiveRecord::Migration
   def up
-    create_table :comments do |t|
+    create_table :comments, :force => true do |t|
       t.column :post_id,          :integer,   :null => false, :limit => 20
       t.column :author_id,        :integer,   :null => true,  :limit => 20
       t.column :author_name,      :string,    :null => false, :limit => 100

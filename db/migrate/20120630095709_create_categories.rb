@@ -1,6 +1,6 @@
 class CreateCategories < ActiveRecord::Migration
   def up
-    create_table :categories do |t|
+    create_table :categories, :force => true do |t|
       t.column :name, :string, :null => false, :limit => 200
       t.column :slug, :string, :null => false, :limit => 200
     end
