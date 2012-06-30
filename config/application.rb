@@ -61,9 +61,9 @@ module Wordly
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += %w( wysihtml5n.js )
+    config.assets.precompile += %w( wysihtml5n-editor.js wysihtml5n-editor.css )
 
-    config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
+    #config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
