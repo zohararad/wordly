@@ -7,6 +7,7 @@ gem 'activeadmin'
 gem 'sass-rails',   '~> 3.2.3'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'haml-rails'
+gem 'acts-as-taggable-on'
 
 # Gems used only for assets and not required
 # in production environments by default.
