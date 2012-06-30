@@ -183,6 +183,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   haml-rails
   jquery-rails
+  meta_search (>= 1.1.0.pre)
   mysql2
   rails (= 3.2.6)
   rspec-rails
