@@ -9,6 +9,7 @@ gem "meta_search",    '>= 1.1.0.pre'
 gem 'haml-rails'
 gem 'acts-as-taggable-on'
 gem 'wysihtml5n-rails'
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
