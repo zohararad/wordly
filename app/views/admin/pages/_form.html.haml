@@ -1,0 +1,9 @@
+= semantic_form_for [:admin, @page] do |f|
+  = f.inputs do
+    = f.input :page_title
+    = f.input :slug
+    = f.input :page_content, :input_html => { :class => 'wysiwyg', :rows => 30 }
+    = f.input :published, :as => :boolean, :label => "Publish Page"
+  = f.actions
+
+= render :partial => 'admin/partials/wysihtml5n'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630100111) do
+ActiveRecord::Schema.define(:version => 20120702162530) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name",                                                 :null => false
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(:version => 20120630100111) do
 
   add_index "comments", ["author_id"], :name => "index_comments_on_author_id"
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+
+  create_table "pages", :force => true do |t|
+    t.string   "page_title",   :limit => 512,                       :null => false
+    t.string   "slug",         :limit => 200,                       :null => false
+    t.text     "page_content", :limit => 2147483647,                :null => false
+    t.integer  "author_id",                                         :null => false
+    t.integer  "published",    :limit => 1,          :default => 0, :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+  end
+
+  add_index "pages", ["author_id"], :name => "index_pages_on_author_id"
 
   create_table "posts", :force => true do |t|
     t.string   "post_title",    :limit => 512,                       :null => false
