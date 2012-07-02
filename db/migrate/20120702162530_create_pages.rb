@@ -1,6 +1,6 @@
 class CreatePages < ActiveRecord::Migration
   def up
-    create_table :pages do |t|
+    create_table :pages, :force => true do |t|
       t.column :page_title,       :string,    :null => false, :limit => 512
       t.column :slug,             :string,    :null => false, :limit => 200
       t.column :page_content,     :longtext,  :null => false
