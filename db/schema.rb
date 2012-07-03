@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20120702162530) do
     t.string   "slug",          :limit => 200,                       :null => false
     t.text     "post_excerpt",                                       :null => false
     t.text     "post_content",  :limit => 2147483647,                :null => false
-    t.integer  "comment_count",                                      :null => false
+    t.integer  "comment_count",                       :default => 0, :null => false
     t.integer  "author_id",                                          :null => false
     t.integer  "published",     :limit => 1,          :default => 0, :null => false
     t.datetime "created_at",                                         :null => false

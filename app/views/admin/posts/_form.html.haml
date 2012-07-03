@@ -2,6 +2,7 @@
   = f.inputs do
     = f.input :post_title
     = f.input :slug
+    = f.input :categories
     = f.input :post_excerpt, :input_html => { :rows => 4  }
     = f.input :post_content, :input_html => { :class => 'wysiwyg', :rows => 30 }
     = f.input :published, :as => :boolean, :label => "Publish Post"
