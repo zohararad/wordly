@@ -15,6 +15,6 @@
         = comment.input :author_name, :label => "Your Name", :input_html => { :class => 'span5', :required => 'required'  }
         = comment.input :author_email, :label => "Your Email", :as => :email, :input_html => { :class => 'span5', :required => 'required'  }
         = comment.input :author_website, :label => "Your Website", :as => :url, :input_html => { :class => 'span5' }
-        = comment.input :comment, :as => :text, :input_html => { :rows => 5, :class => 'span7'  }
+        = comment.input :comment, :as => :text, :input_html => { :rows => 5, :class => 'span6'  }
         = comment.actions do
           = comment.action :submit, :button_html => { :class => "btn btn-info primary", :disable_with => 'Wait...', :value => 'Add Comment' }
