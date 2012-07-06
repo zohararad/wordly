@@ -1,13 +1,24 @@
 .post{
   background: #fff;
-  border: 1px solid #dcdbdb;
+  border: 1px solid $postBorder;
   padding: 15px 25px;
   margin: 0 0 20px;
   @include box-shadow(0 0 6px rgba(100,100,100, 0.2));
 }
 
+.post .post-title{
+  margin-bottom: 0.4em;
+}
+
 .post .post-excerpt{
   margin: 15px 0 35px;
+}
+
+.post-content img{
+  border:1px solid $postBorder;
+  padding:1px;
+  float: left;
+  margin: 0 15px 15px 0;
 }
 
 .post footer{
