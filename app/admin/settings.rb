@@ -7,11 +7,10 @@ ActiveAdmin.register Setting, :as => 'Settings' do
 
   show :title => 'Site Settings' do |s|
     attributes_table do
-      row :site_name do
-        s.configuration[:site_name]
-      end
-      row :theme do
-        s.configuration[:theme]
+      s.configuration.keys.each do |k|
+        row k do
+          s.configuration[k]
+        end
       end
     end
   end
