@@ -9,3 +9,12 @@ form fieldset.inputs{
   width:100%;
   overflow: hidden;
 }
+
+legend.label{
+  border: none;
+}
+
+.choices-group .choice{
+  display: inline-block;
+  margin-right: 5px;
+}

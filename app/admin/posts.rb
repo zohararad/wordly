@@ -2,6 +2,26 @@ ActiveAdmin.register Post do
 
   form :partial => "form"
 
+  index do
+    column :title
+    column :slug
+    column :author
+    column :created_at
+  end
+
+  show do |post|
+    h3 post.title
+    h4 'By %s | %s' % [post.author, post.created_at.strftime('%d-%B-%Y %H:%M')]
+    div do
+      simple_format post.excerpt
+    end
+    div do
+      span { link_to 'Edit post', edit_admin_post_url(post) }
+      span { '&nbsp;|&nbsp;'.html_safe }
+      span { link_to 'Back to posts', admin_posts_url }
+    end
+  end
+
   controller do
 
     def create
