@@ -1,0 +1,9 @@
+.site-footer{
+  background-color: $footerBackgroundColor;
+  border-top: 5px solid darken($backgroundColor, 15%);
+  min-height: 100px;
+  margin-top: 35px;
+  padding-top: 50px;
+  text-align: center;
+  color: $backgroundColor;
+}
