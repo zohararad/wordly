@@ -8,13 +8,17 @@
 
 .mast .site-name{
   font-size: 24px;
-  color: #fff;
   position: absolute;
-  bottom: 4px;
+  bottom: 3px;
   width:351px;
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+.mast .site-name a{
+  color: #fff;
+  text-decoration: none;
 }
 
 .mast .site-caption{
@@ -49,9 +53,31 @@
 
 .site-nav-link{
   display: inline-block;
+  position: relative;
+}
+
+.site-nav-link + .site-nav-link {
+  padding-left: 24px;
+}
+
+.site-nav-link + .site-nav-link:after{
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: lighten($textColor, 15%);
+  @include border-radius(50%);
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  margin-top: -3px;
 }
 
 .site-nav-link a{
   text-transform: uppercase;
   color: $textColor;
+}
+
+.site-nav-link a:hover{
+  color: $linkColor;
 }
