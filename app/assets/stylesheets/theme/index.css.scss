@@ -40,6 +40,7 @@
 @import "twitter/bootstrap/utilities"; // Has to be last to override when necessary
 
 // ==== Import Theme styles ==== //
+@import 'mixins';
 @import 'base';
 @import 'header';
 @import 'footer';

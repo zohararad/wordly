@@ -1,0 +1,4 @@
+@mixin text-shadow($shadow){
+  text-shadow: $shadow;
+  -ms-text-shadow: $shadow;
+}

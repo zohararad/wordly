@@ -19,6 +19,7 @@
 .mast .site-name a{
   color: #fff;
   text-decoration: none;
+  @include text-shadow(0 1px 0 darken($linkColor, 15%));
 }
 
 .mast .site-caption{
@@ -30,6 +31,7 @@
   top:5px;
   width: 351px;
   text-align: center;
+  @include text-shadow(0 1px 0 white);
 }
 
 .site-nav{
@@ -76,6 +78,7 @@
 .site-nav-link a{
   text-transform: uppercase;
   color: $textColor;
+  @include text-shadow(0 1px 0 white);
 }
 
 .site-nav-link a:hover{
