@@ -7,6 +7,7 @@ ActiveAdmin.register Post do
     column :slug
     column :author
     column :created_at
+    default_actions
   end
 
   show do |post|

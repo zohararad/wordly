@@ -3,3 +3,6 @@
     %h1.post-title= @post.title
   %div.post-content
     != @post.content
+  %footer
+    %p.post-tags
+      != @post.tags.collect { |tag| link_to tag.name.titleize, tag_posts_url(tag.name) }.join(', ')
