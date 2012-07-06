@@ -1,0 +1,11 @@
+body{
+  font-family: 'Arimo', 'Helvetica Neue', sans-serif;
+  border-top:10px solid #000;
+  background: $backgroundColor image-url('noise.png');
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Chivo', 'Helvetica Neue', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}

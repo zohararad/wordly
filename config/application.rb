@@ -65,6 +65,7 @@ module Wordly
 
     config.assets.paths << Rails.root.join('app','assets','stylesheets', 'active_admin')
     config.assets.paths << Rails.root.join('app','assets','javascripts', 'active_admin')
+    config.assets.paths << Rails.root.join('app','assets','images')
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

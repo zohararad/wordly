@@ -1,0 +1,57 @@
+.mast{
+  background: image-url('mast.png') no-repeat center bottom;
+  width:351px;
+  height:94px;
+  margin: 5px auto;
+  position: relative;
+}
+
+.mast .site-name{
+  font-size: 24px;
+  color: #fff;
+  position: absolute;
+  bottom: 4px;
+  width:351px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.mast .site-caption{
+  font-size: 12px;
+  font-weight: 400;
+  color: darken($backgroundColor, 30%);
+  text-transform: uppercase;
+  position: absolute;
+  top:5px;
+  width: 351px;
+  text-align: center;
+}
+
+.site-nav{
+  border-top: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
+  height: 32px;
+  line-height: 32px;
+  margin: 25px 10px 15px;
+}
+
+.site-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.site-nav-link{
+  display: inline-block;
+}
+
+.site-nav-link a{
+  text-transform: uppercase;
+  color: $textColor;
+}

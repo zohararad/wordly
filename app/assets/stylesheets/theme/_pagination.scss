@@ -1,0 +1,13 @@
+.pagination{
+  text-align: center;
+}
+
+.pagination .current,
+.pagination a{
+  display: inline-block;
+  padding: 3px 10px;
+  border:1px solid #dcdbdb;
+  @include gradient-vertical(#f9f9f9, #e9e9e9);
+  @include box-shadow(0 0 1px 0 rgba(1,1,1, 0.2));
+  font-size: 13px;
+}
