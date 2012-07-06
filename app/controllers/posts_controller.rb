@@ -20,4 +20,19 @@ class PostsController < ApplicationController
     @post = Post.find_by_slug params[:slug]
   end
 
+  def update
+    post = Post.find params[:id]
+    unless post.nil?
+      comment = Comment.new params[:post][:comment]
+      comment.post_id = post.id
+      comment.author_id = current_author.id unless current_author.nil?
+      comment.author_ip = request.remote_ip
+      if comment.save!
+        post.comment_count += 1
+        post.save
+      end
+      redirect_to post_url(post.slug)
+    end
+  end
+
 end

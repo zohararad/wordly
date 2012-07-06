@@ -3,6 +3,7 @@
     %h1.post-title= @post.title
   %div.post-content
     != @post.content
+  %p.post-tags
+    != @post.tags.collect { |tag| link_to tag.name.titleize, tag_posts_url(tag.name) }.join(', ')
   %footer
-    %p.post-tags
-      != @post.tags.collect { |tag| link_to tag.name.titleize, tag_posts_url(tag.name) }.join(', ')
+    = render :partial => 'posts/comments', :locals => {:post => @post, :comments => @post.comments}

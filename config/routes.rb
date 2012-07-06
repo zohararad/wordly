@@ -3,7 +3,7 @@ Wordly::Application.routes.draw do
 
   devise_for :authors, ActiveAdmin::Devise.config
 
-  resources :posts, :only => [:index]
+  resources :posts, :only => [:index, :update]
 
   match 'posts(/page/:page)' => 'posts#index'
   match 'posts/:slug' => 'posts#show', :as => 'post'

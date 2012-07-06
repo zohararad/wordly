@@ -1,5 +1,5 @@
 body{
-  font-family: 'Arimo', 'Helvetica Neue', sans-serif;
+  font-family: $fontFamily;
   border-top:10px solid #000;
   background: $backgroundColor image-url('noise.png');
 }

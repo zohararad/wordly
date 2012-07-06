@@ -1,0 +1,46 @@
+.post-comments ol,
+.post-comments ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// comments list
+
+.post-comments h3,
+.post-comments .comments-list li{
+  @include text-shadow(0 1px 0 white);
+}
+
+.post-comments .comments-list{
+  margin-bottom: 35px;
+}
+
+.comments-list .comment{
+  padding: 15px 0;
+}
+
+.comments-list .comment + .comment{
+  border-top: 1px solid $postBorder;
+}
+
+.post-comments .comment-meta{
+  font-size: $baseFontSize - 4px;
+  color: lighten($textColor, 10%);
+}
+
+// comments form
+.post-comments abbr[title=required]{
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  border: none;
+  cursor: default;
+}
+
+.post-comments abbr[title=required]:after{
+  content: '(Required)';
+  font: normal normal $baseFontSize - 4px $fontFamily;
+  color:$linkColor;
+  padding-left: 10px;
+}
