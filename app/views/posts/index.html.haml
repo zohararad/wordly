@@ -1,0 +1,10 @@
+- if @posts.any?
+  %div.posts
+    - for post in @posts
+      %article.post
+        %header
+          %h1.post-title= post.title
+        %p= post.excerpt
+        %footer
+          %h4= 'By %s | %s' % [post.author, post.created_at.strftime(global_settings.date_format)]
+          %p= link_to 'Read More...', post_url(post.slug)

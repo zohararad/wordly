@@ -1,0 +1,7 @@
+%header.site-header
+  %h1.site-name= global_settings.site_name
+  %h2.site-caption= global_settings.site_caption
+  %nav.site-nav
+    %ul.site-nav-links
+      %li.site-nav-link
+        = link_to 'Posts', posts_url, {:title => 'Posts'}

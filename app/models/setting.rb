@@ -5,7 +5,10 @@ class Setting < ActiveRecord::Base
   after_initialize :add_configuration_accesors
 
   DEFAULT_SETTINGS = {
-    :site_name => 'Another Wordly Site'
+    :site_name => 'Another Wordly Site',
+    :site_caption => 'Spreading the word of Wordly',
+    :date_format => '%d-%B-%Y %H:%M',
+    :posts_per_page => 10
   }
 
   private

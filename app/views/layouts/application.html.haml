@@ -1,8 +1,13 @@
 !!!
 %html
   %head
-    %title some title
+    %title= '%s | %s' % [global_settings.site_name, global_settings.site_caption]
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
+    %link{:rel => 'icon', :type => 'image/x-icon', :href => root_url + 'favicon.ico'}
   %body
-    = yield
+    %div.main
+      = render :partial => 'layouts/header'
+      %div.site-content= yield
+      = render :partial => 'layouts/sidebar'
+      = render :partial => 'layouts/footer'
