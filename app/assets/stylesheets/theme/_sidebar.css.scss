@@ -1,0 +1,13 @@
+.site-sidebar{
+  @include text-shadow(0 1px 0 white);
+}
+
+.sidebar-content{
+  padding: 15px 25px;
+  background-color: rgba(50,50,50, 0.1);
+  @include box-shadow(0 0 6px rgba(100,100,100, 0.4));
+}
+
+.sidebar-content h1{
+  color: darken($blue, 25%);
+}
