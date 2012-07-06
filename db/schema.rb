@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702162530) do
+ActiveRecord::Schema.define(:version => 20120706061544) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name",                                                 :null => false
@@ -90,6 +90,10 @@ ActiveRecord::Schema.define(:version => 20120702162530) do
   end
 
   add_index "posts", ["author_id"], :name => "index_posts_on_author_id"
+
+  create_table "settings", :force => true do |t|
+    t.text "configuration", :limit => 2147483647, :null => false
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
