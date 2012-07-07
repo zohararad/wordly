@@ -4,6 +4,7 @@ class DeviseCreateAuthors < ActiveRecord::Migration
       ## base
       t.column :first_name,   :string,      :null => false, :limit => 255
       t.column :last_name,    :string,      :null => false, :limit => 255
+      t.column :slug,         :string,      :null => false, :limit => 100
       t.column :email,        :string,      :null => false, :limit => 255
       t.column :website,      :string,      :null => true,  :limit => 255
       t.column :about,        :text,        :null => true

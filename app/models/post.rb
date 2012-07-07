@@ -15,6 +15,9 @@ class Post < ActiveRecord::Base
     where(["posts.published = 1 and categories_posts.category_id = ?", category_id]).joins(:categories, :author).includes(:categories, :author)
   }
 
+  scope :latest_by_author, lambda { |author_id|
+    where(['author_id = ?', author_id]).order('created_at desc').limit(10)
+  }
   private
 
   def set_slug

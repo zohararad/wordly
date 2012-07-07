@@ -6,11 +6,13 @@ class Author < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :first_name, :last_name, :email, :website, :about, :meta, :remember_me
+  attr_accessible :first_name, :last_name, :email, :website, :about, :meta, :remember_me, :password, :password_confirmation
 
   has_many :posts
   has_many :comments
   has_many :pages
+
+  before_save :set_slug
 
   def full_name
     [first_name, last_name].join(' ')
@@ -18,5 +20,11 @@ class Author < ActiveRecord::Base
 
   def to_s
     full_name
+  end
+
+  private
+
+  def set_slug
+    self.slug = [first_name.downcase, last_name.downcase].join('-')
   end
 end

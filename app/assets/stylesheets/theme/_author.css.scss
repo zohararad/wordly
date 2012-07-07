@@ -1,0 +1,22 @@
+.author-posts {
+  list-style: none;
+  margin: 15px 0 0;
+  padding: 0;
+  @include text-shadow(0 1px 0 white);
+
+  h3 {
+    font-weight: 400;
+    line-height: 0.9em;
+    border-bottom: 1px solid darken($postBorder, 2%);
+    padding: 0;
+    margin: 0 0 10px;
+  }
+
+  p {
+    font-size: $baseFontSize - 4px;
+  }
+
+  .author-post{
+    margin-bottom: 25px;
+  }
+}

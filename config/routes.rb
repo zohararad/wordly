@@ -8,9 +8,11 @@ Wordly::Application.routes.draw do
   match 'posts(/page/:page)' => 'posts#index'
   match 'posts/:slug' => 'posts#show', :as => 'post'
 
-  resources :author, :only => [:show] do
+  resources :author, :only => [] do
     resources :posts
   end
+
+  match 'authors/:slug' => 'authors#show', :as => 'author'
 
   resources :categories, :only => [] do
     resources :posts, :only => [:index]

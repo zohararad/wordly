@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20120706061544) do
   create_table "authors", :force => true do |t|
     t.string   "first_name",                                                 :null => false
     t.string   "last_name",                                                  :null => false
+    t.string   "slug",                   :limit => 100,                      :null => false
     t.string   "email",                                                      :null => false
     t.string   "website"
     t.text     "about"

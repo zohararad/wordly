@@ -9,7 +9,7 @@
           %p
             %span
               By
-              = link_to post.author, author_url(post.author)
+              = link_to post.author, author_url(post.author.slug)
             %span= post.created_at.strftime(global_settings.date_format)
             %span= link_to 'Read More...', post_url(post.slug)
     = paginate @posts
