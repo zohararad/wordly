@@ -16,7 +16,7 @@ ActiveAdmin.register Author do
   controller do
 
     def update
-      if params[:author][:password].blank?
+      if params[:author][:password].blank? or params[:author][:password_confirmation].blank?
         params[:author].delete(:password)
         params[:author].delete(:password_confirmation)
       end
