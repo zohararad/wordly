@@ -14,7 +14,6 @@ class Setting < ActiveRecord::Base
   private
 
   def add_configuration_accesors
-    self.configuration.merge!(DEFAULT_SETTINGS)
     self.configuration.each do |k,v|
       self.class_eval do
         define_method("#{k}") do
