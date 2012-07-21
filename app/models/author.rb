@@ -12,10 +12,15 @@ class Author < ActiveRecord::Base
   has_many :comments
   has_many :pages
 
+  validates :first_name,    :presence => true,  :length => { :minimum => 2 }
+  validates :last_name,     :presence => true,  :length => { :minimum => 2 }
+  validates :email,         :presence => true,  :length => { :minimum => 3 }, :uniqueness => true, :email => true
+  validates :website,       :allow_nil => true, :uri => true
+
   before_save :set_slug
 
   def full_name
-    [first_name, last_name].join(' ')
+    [first_name, last_name].compact.join(' ')
   end
 
   def to_s
