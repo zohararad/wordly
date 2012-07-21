@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20120706061544) do
   create_table "posts", :force => true do |t|
     t.string   "title",         :limit => 512,                       :null => false
     t.string   "slug",          :limit => 200,                       :null => false
-    t.text     "excerpt",                                            :null => false
+    t.text     "excerpt"
     t.text     "content",       :limit => 2147483647,                :null => false
     t.integer  "comment_count",                       :default => 0, :null => false
     t.integer  "author_id",                                          :null => false
