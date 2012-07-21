@@ -3,6 +3,9 @@ class Category < ActiveRecord::Base
 
   attr_accessible :name, :slug
 
+  validates :name,    :presence => true,  :length => { :minimum => 2 }, :uniqueness => true
+  validates :slug,    :presence => true,  :length => { :minimum => 2 }, :uniqueness => true
+
   def to_s
     name
   end
