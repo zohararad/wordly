@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(:version => 20120706061544) do
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
 
   create_table "pages", :force => true do |t|
-    t.string   "page_title",   :limit => 512,                       :null => false
-    t.string   "slug",         :limit => 200,                       :null => false
-    t.text     "page_content", :limit => 2147483647,                :null => false
-    t.integer  "author_id",                                         :null => false
-    t.integer  "published",    :limit => 1,          :default => 0, :null => false
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.string   "title",      :limit => 512,                       :null => false
+    t.string   "slug",       :limit => 200,                       :null => false
+    t.text     "content",    :limit => 2147483647,                :null => false
+    t.integer  "author_id",                                       :null => false
+    t.integer  "published",  :limit => 1,          :default => 0, :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   add_index "pages", ["author_id"], :name => "index_pages_on_author_id"
