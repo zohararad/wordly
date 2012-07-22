@@ -4,7 +4,7 @@ class CreateSettings < ActiveRecord::Migration
       t.column :configuration, :longtext, :null => false
     end
 
-    Setting.create! :configuration => {:site_name => 'Another Wordly Site'}
+    Setting.create! :configuration => Setting::DEFAULT_SETTINGS
   end
 
   def down
