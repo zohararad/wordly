@@ -9,12 +9,12 @@
             = 'By %s' % comment.author_name
             = comment.created_at.strftime(global_settings.date_format)
 
-  = semantic_form_for post do |f|
+  = semantic_form_for(post, :url => post_url(post.uid), :html => {:id => nil}) do |f|
     = f.semantic_fields_for :comment do |comment|
       - comment.inputs do
         = comment.input :author_name, :label => "Your Name", :input_html => { :class => 'span5', :required => 'required'  }
         = comment.input :author_email, :label => "Your Email", :as => :email, :input_html => { :class => 'span5', :required => 'required'  }
-        = comment.input :author_website, :label => "Your Website", :as => :url, :input_html => { :class => 'span5' }
+        = comment.input :author_website, :label => "Your Website", :as => :url, :required => false, :input_html => { :class => 'span5' }
         = comment.input :comment, :as => :text, :input_html => { :rows => 5, :class => 'span6'  }
         = comment.actions do
           = comment.action :submit, :button_html => { :class => "btn btn-info primary", :disable_with => 'Wait...', :value => 'Add Comment' }

@@ -21,7 +21,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find params[:id]
+    id = Post.id_from_uid(params[:id])
+    post = Post.find(id)
     unless post.nil?
       comment = Comment.new params[:post][:comment]
       comment.post_id = post.id
