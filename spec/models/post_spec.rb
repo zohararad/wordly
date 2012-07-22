@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe Post do
 
-  before(:all) do
-    @post = Post.new(:content => '<h1>Some Title</h1><p>some text <strong>again</strong></p>')
-    @post.author_id = 10
+  before :all do
+    @post = build(:post, title: nil, content: '<h1>Some Title</h1><p>some text <strong>again</strong></p>')
   end
 
   it 'should return shortened post content if excerpt is nil' do
