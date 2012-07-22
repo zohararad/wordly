@@ -17,8 +17,9 @@ describe Comment do
 
   it 'should decrement comment count when creating a new comment' do
     @comment.save
+    previous_count = @post.comment_count
     @comment.destroy
-    @post.comment_count.should == 0
+    @post.comment_count.should == previous_count - 1
   end
 
 end
