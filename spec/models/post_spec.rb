@@ -20,4 +20,7 @@ describe Post do
     @post.slug.should == 'some-test-title'
   end
 
+  it 'should get post id from its uid' do
+    @post.id.should == Post.id_from_uid(@post.uid)
+  end
 end
