@@ -32,6 +32,12 @@ class Post < ActiveRecord::Base
     excerpt || strip_tags(content.gsub(/<\/([^>]+)>/,"</$1> ")).split(' ')[0..30].join(' ') + '...'
   end
 
+  def uid_from_id
+    salt = rand(36**8).to_s(36)
+    str = [salt, self.id].join('')
+    Base64::encode64(str).gsub(/\n/,'')
+  end
+
   def self.id_from_uid(uid)
     Base64::decode64(uid)[8..-1].to_i
   end
@@ -39,9 +45,7 @@ class Post < ActiveRecord::Base
   private
 
   def set_uid
-    salt = rand(36**8).to_s(36)
-    str = [salt,self.id].join('')
-    self.uid = Base64::encode64(str).gsub(/\n/,'')
+    self.uid = uid_from_id
     self.save
   end
 

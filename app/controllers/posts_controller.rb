@@ -28,9 +28,10 @@ class PostsController < ApplicationController
       comment.post_id = post.id
       comment.author_id = current_author.id unless current_author.nil?
       comment.author_ip = request.remote_ip
-      if comment.save!
-        post.comment_count += 1
-        post.save
+      if comment.save
+        flash[:notice] = 'Comment successfully saved'
+      else
+        flash[:error] = 'Comment was not saved'
       end
       redirect_to post_url(post.slug)
     end
