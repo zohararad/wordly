@@ -8,10 +8,10 @@ class Comment < ActiveRecord::Base
   after_destroy :decrement_comment_count
 
   validates :post_id,          :presence => true
-  validates :author_name,      :presence => true
-  validates :comment,          :presence => true
-  validates :author_email,     :allow_blank => true, :email => true
-  validates :author_website,   :allow_blank => true, :uri => true
+  validates :author_name,      :allow_blank => false, :length => { :minimum => 1, :too_short => "Your name is required" }
+  validates :comment,          :allow_blank => false, :length => { :minimum => 1, :too_short => "You forgot to write a comment" }
+  validates :author_email,     :allow_blank => false, :email => { :message => 'A valid email address is required' }
+  validates :author_website,   :allow_blank => true, :uri => { :message => 'A valid URL is required' }
 
   private
 

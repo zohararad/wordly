@@ -30,7 +30,7 @@
 }
 
 // comments form
-.post-comments abbr[title=required]{
+.post-comment-form abbr[title=required]{
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
@@ -38,9 +38,24 @@
   cursor: default;
 }
 
-.post-comments abbr[title=required]:after{
+.post-comment-form abbr[title=required]:after{
   content: '(Required)';
   font: normal normal $baseFontSize - 4px $fontFamily;
   color:$linkColor;
   padding-left: 10px;
+}
+
+.post-comment-form .inline-errors{
+  font-size:$baseFontSize - 4;
+  color: $linkColor;
+  margin: -6px 0 9px 2px;
+}
+
+.post-comment-form .inline-errors:before{
+  content:'Oops... '
+}
+
+.post-comment-form .error input,
+.post-comment-form .error textarea{
+  border-color: red;
 }
