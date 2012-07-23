@@ -3,7 +3,7 @@ Wordly::Application.routes.draw do
 
   devise_for :authors, ActiveAdmin::Devise.config
 
-  resources :posts, :only => [:index, :update]
+  resources :posts, :only => [:index]
 
   match 'posts(/page/:page)' => 'posts#index'
   match 'posts/:slug' => 'posts#show', :as => 'post'
@@ -21,6 +21,8 @@ Wordly::Application.routes.draw do
   resources :tags, :only => [] do
     resources :posts, :only => [:index]
   end
+
+  resources :comments, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

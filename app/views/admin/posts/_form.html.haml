@@ -1,9 +1,9 @@
 = semantic_form_for [:admin, @post] do |f|
   = f.inputs do
     = f.input :title
-    = f.input :slug
+    = f.input :slug, :hint => "Created automatically if left blank"
     = f.input :categories, :as => :check_boxes
-    = f.input :excerpt, :input_html => { :rows => 4  }
+    = f.input :excerpt, :hint => "Extracted from post content if left blank", :input_html => { :rows => 4  }
     = f.input :content, :input_html => { :class => 'wysiwyg', :rows => 30 }
     = f.input :tag_list, :as => :string
     = f.input :published, :as => :boolean, :label => "Publish Post"

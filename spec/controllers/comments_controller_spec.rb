@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe PostsController do
+describe CommentsController do
 
   def stub_warden
     request.env['warden'] = mock(Warden, :authenticate => nil, :authenticate! => nil, :authenticate? => nil)
   end
 
-  def do_update
+  def do_create
     stub_warden
-    put :update, :id => @post.uid_from_id, :post => {:comment => @comment.attributes}
+    post :create, :comment => @comment.attributes.merge({:uid => @post.uid_from_id})
   end
 
   context 'when posting a valid comment' do
@@ -21,21 +21,22 @@ describe PostsController do
 
     it "should successfully save the comment" do
       @comment.should_receive(:save).and_return(true)
-      do_update
+      do_create
     end
 
     it 'should have "successfully saved" in flash[:notice]' do
-      do_update
+      do_create
       flash[:notice].should match(/successfully\ssaved/i)
     end
 
     it 'should redirect to post url after saving comment' do
-      do_update
+      do_create
       response.should redirect_to(post_path(@post.slug))
     end
   end
 
   context 'when posting an invalid comment' do
+
     before :each do
       @post = FactoryGirl.create(:post, :slug => 'some-slug')
       @comment = FactoryGirl.build(:comment,:author_name => nil, :author_email => nil)
@@ -45,17 +46,17 @@ describe PostsController do
 
     it "should not save the comment" do
       @comment.should_receive(:save).and_return(false)
-      do_update
+      do_create
     end
 
     it 'should have "successfully saved" in flash[:notice]' do
-      do_update
+      do_create
       flash[:error].should match(/not\ssaved/i)
     end
 
-    it 'should redirect to post url after saving comment' do
-      do_update
-      response.should redirect_to(post_path(@post.slug))
+    it 'should render posts/show when failing to save comment' do
+      do_create
+      response.should render_template("posts/show")
     end
   end
 
