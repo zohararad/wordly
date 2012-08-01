@@ -1,13 +1,5 @@
 module PostsHelper
 
-  # Generates comment hierarachy string based on the comment a user is replying to .
-  # This string is used to order comments as a tree
-  # @param [Comment] reply_to_comment the comment that's being replied to
-  # @return [String] concatenation of replied to comment's hierarchy and id
-  def get_comment_hierarchy(reply_to_comment)
-    [reply_to_comment.hierarchy,reply_to_comment.id].compact.join('-')
-  end
-
   # Finds the comment to which a user is currently replying if any
   # @param [Array] comments list of comments for current post
   # @return [Comment] comment to reply to or nil

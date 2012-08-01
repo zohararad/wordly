@@ -12,6 +12,6 @@
       = f.input :author_website, :label => "Your Website", :as => :url, :input_html => { :class => 'span5' }
       = f.input :comment, :as => :text, :required => true, :input_html => { :rows => 5, :class => 'span6'  }
       = f.input :uid, :as => :hidden, :value => post.uid
-      = f.input :hierarchy, :as => :hidden, :value => get_comment_hierarchy(reply_to_comment) unless reply_to_comment.nil?
+      = f.input :comment_parent_id, :as => :hidden, :value => reply_to_comment.id unless reply_to_comment.nil?
       = f.actions do
         = f.action :submit, :button_html => { :class => "btn btn-info primary", :disable_with => 'Wait...', :value => 'Add Comment' }

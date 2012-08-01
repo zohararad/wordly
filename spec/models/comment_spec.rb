@@ -22,4 +22,12 @@ describe Comment do
     @post.comment_count.should == previous_count - 1
   end
 
+  it 'should create comment hierarchy when replying to a comment' do
+    @comment.save
+    reply_to_comment = build(:comment)
+    reply_to_comment.post = @post
+    reply_to_comment.comment_parent_id = @comment.id
+    reply_to_comment.save
+    reply_to_comment.hierarchy.should == '%s-%s' % [@comment.hierarchy, @comment.id]
+  end
 end

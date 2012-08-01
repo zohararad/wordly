@@ -1,9 +1,11 @@
 class Comment < ActiveRecord::Base
   attr_protected :author_id, :post_id
+  attr_accessor :comment_parent_id
 
   belongs_to :post
   belongs_to :author
 
+  before_create :set_comment_hierarchy
   after_create  :set_default_hierarchy
   after_create  :increment_comment_count
   after_destroy :decrement_comment_count
@@ -16,10 +18,6 @@ class Comment < ActiveRecord::Base
 
   default_scope order('hierarchy asc')
 
-  def hierarchy_level
-    hierarchy.scan(/(-)/).size
-  end
-
   private
 
   def increment_comment_count
@@ -30,6 +28,13 @@ class Comment < ActiveRecord::Base
   def decrement_comment_count
     self.post.comment_count = [self.post.comment_count - 1, 0].max
     self.post.save
+  end
+
+  def set_comment_hierarchy
+    unless comment_parent_id.nil?
+      reply_to_comment = Comment.find(comment_parent_id)
+      self.hierarchy = [reply_to_comment.hierarchy,reply_to_comment.id].compact.join('-')
+    end
   end
 
   def set_default_hierarchy
