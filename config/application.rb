@@ -63,8 +63,8 @@ module Wordly
     config.assets.enabled = true
     config.assets.precompile += %w( active_admin/wysihtml5n-editor.js active_admin/wysihtml5n-editor.css )
 
-    config.assets.paths << Rails.root.join('app','assets','stylesheets', 'active_admin')
-    config.assets.paths << Rails.root.join('app','assets','javascripts', 'active_admin')
+    config.assets.paths << Rails.root.join('vendor','assets','stylesheets', 'active_admin')
+    config.assets.paths << Rails.root.join('vendor','assets','javascripts', 'active_admin')
     config.assets.paths << Rails.root.join('app','assets','images')
 
     # Version of your assets, change this if you want to expire all your assets
