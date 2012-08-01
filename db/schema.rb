@@ -51,16 +51,16 @@ ActiveRecord::Schema.define(:version => 20120722175213) do
   add_index "categories_posts", ["post_id", "category_id"], :name => "index_categories_posts_on_post_id_and_category_id"
 
   create_table "comments", :force => true do |t|
-    t.integer  "post_id",                                         :null => false
+    t.integer  "post_id",                        :null => false
     t.integer  "author_id"
-    t.string   "author_name",    :limit => 100,                   :null => false
+    t.string   "author_name",    :limit => 100,  :null => false
     t.string   "author_email",   :limit => 60
     t.string   "author_website", :limit => 100
-    t.string   "author_ip",      :limit => 100,                   :null => false
-    t.text     "comment",                                         :null => false
-    t.string   "hierarchy",      :limit => 2048, :default => "0", :null => false
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.string   "author_ip",      :limit => 100,  :null => false
+    t.text     "comment",                        :null => false
+    t.string   "hierarchy",      :limit => 2048
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "comments", ["author_id"], :name => "index_comments_on_author_id"

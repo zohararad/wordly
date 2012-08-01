@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :author
 
+  after_create  :set_default_hierarchy
   after_create  :increment_comment_count
   after_destroy :decrement_comment_count
 
@@ -12,6 +13,12 @@ class Comment < ActiveRecord::Base
   validates :comment,          :allow_blank => false, :length => { :minimum => 1, :too_short => "You forgot to write a comment" }
   validates :author_email,     :allow_blank => false, :email => { :message => 'A valid email address is required' }
   validates :author_website,   :allow_blank => true, :uri => { :message => 'A valid URL is required' }
+
+  default_scope order('hierarchy asc')
+
+  def hierarchy_level
+    hierarchy.scan(/(-)/).size
+  end
 
   private
 
@@ -23,6 +30,10 @@ class Comment < ActiveRecord::Base
   def decrement_comment_count
     self.post.comment_count = [self.post.comment_count - 1, 0].max
     self.post.save
+  end
+
+  def set_default_hierarchy
+    self.update_attribute(:hierarchy, self.id) if self.hierarchy.nil?
   end
 
 end

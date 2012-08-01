@@ -1,20 +1,17 @@
 %div.post-comments
   %h3= 'Comments %s' % (post.comment_count > 0 ? '(%s)' % post.comment_count : '')
   - if comments.any?
-    %ul.comments-list
-      - for comment in comments
-        %li.comment
-          %p.comment-text= comment.comment
-          %p.comment-meta
-            = 'By %s' % comment.author_name
-            = comment.created_at.strftime(global_settings.date_format)
-
-  = semantic_form_for(@comment, :html => {:id => nil, :class => 'post-comment-form'}) do |f|
+    - reply_to_comment = get_reply_to_comment(comments)
+    = get_comments(comments, post)
+  = semantic_form_for(@comment, :html => {:id => 'post-comment-form', :class => 'post-comment-form'}) do |f|
+    - unless reply_to_comment.nil?
+      %h3= 'Reply to %s' % reply_to_comment.author_name
     = f.inputs do
       = f.input :author_name, :label => "Your Name", :required => true, :input_html => { :class => 'span5' }
       = f.input :author_email, :label => "Your Email", :required => true, :as => :email, :input_html => { :class => 'span5' }
       = f.input :author_website, :label => "Your Website", :as => :url, :input_html => { :class => 'span5' }
       = f.input :comment, :as => :text, :required => true, :input_html => { :rows => 5, :class => 'span6'  }
       = f.input :uid, :as => :hidden, :value => post.uid
+      = f.input :hierarchy, :as => :hidden, :value => get_comment_hierarchy(reply_to_comment) unless reply_to_comment.nil?
       = f.actions do
         = f.action :submit, :button_html => { :class => "btn btn-info primary", :disable_with => 'Wait...', :value => 'Add Comment' }

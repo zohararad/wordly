@@ -8,7 +8,7 @@ class CreateComments < ActiveRecord::Migration
       t.column :author_website,   :string,    :null => true,  :limit => 100
       t.column :author_ip,        :string,    :null => false, :limit => 100
       t.column :comment,          :text,      :null => false
-      t.column :hierarchy,        :string,    :null => false, :limit => 2048, :default => '0'
+      t.column :hierarchy,        :string,    :null => true, :limit => 2048
       t.timestamps
     end
 
