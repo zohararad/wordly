@@ -17,11 +17,17 @@ class Post < ActiveRecord::Base
   validates :slug,     :uniqueness => true, :allow_nil => false
 
   # published posts
-  scope :published, where(:published => 1).includes(:categories, :author)
+  scope :published, lambda{|page, per_page|
+    where(:published => 1).includes(:categories, :author).page(page).per(per_page)
+  }
 
   # posts in category
-  scope :in_category, lambda {|category_id|
-    where(["posts.published = 1 and categories_posts.category_id = ?", category_id]).joins(:categories, :author).includes(:categories, :author)
+  scope :in_category, lambda {|category_id, page, per_page|
+    where(["posts.published = 1 and categories_posts.category_id = ?", category_id])
+    .joins(:categories, :author)
+    .includes(:categories, :author)
+    .page(page)
+    .per(per_page)
   }
 
   # Latest posts by author
