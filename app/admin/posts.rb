@@ -36,6 +36,15 @@ ActiveAdmin.register Post do
       end
     end
 
+    def edit
+      @tags = Tag.all
+      super
+    end
+
+    def new
+      @tags = Tag.all
+      super
+    end
   end
 
 end

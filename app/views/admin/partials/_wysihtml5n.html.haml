@@ -1,4 +1,15 @@
 :javascript
   $(document).ready(function(){
     $('.wysiwyg').wysiHTML5N();
+    var tags_field = $('#post_tag_list');
+    var tags = tags_field.val().trim().split(',');
+    tags_field.val('').textext({
+      plugins : 'tags autocomplete',
+      tagsItems: tags
+    }).bind('getSuggestions', function(e, data) {
+      var list = #{ @tags.collect(&:name) };
+      var textext = $(e.target).textext()[0],
+                    query = (data ? data.query : '') || '';
+      $(this).trigger('setSuggestions', { result : textext.itemManager().filter(list, query) });
+    })
   });

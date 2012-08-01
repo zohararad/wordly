@@ -1,0 +1,36 @@
+#post_tag_list_input {
+
+  .text-core{
+    width: 78%;
+    margin-left: 20%;
+
+    .text-wrap{
+      width: 100%;
+    }
+
+    #post_tag_list {
+      width: 100% !important;
+      min-height: 32px;
+      font-size: 12px;
+      border-color: #C9D0D6;
+      @include border-radius(2px);
+    }
+
+    .text-tags {
+
+      .text-button {
+        height: 20px;
+        line-height: 18px;
+        font-size: 12px;
+        margin: 3px;
+      }
+
+      .text-remove {
+        top: 3px;
+      }
+
+    }
+
+  }
+
+}
