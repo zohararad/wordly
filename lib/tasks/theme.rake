@@ -26,14 +26,14 @@ namespace :wordly do
 
       # Generate theme directories and index files
       ['javascripts','stylesheets','images'].each do |d|
-        dir = File.join(themes_dir,theme_name, d)
+        dir = File.join(theme_dir, d)
         FileUtils.mkdir_p dir
         FileUtils.touch File.join(dir,'.gitkeep')
         case d
           when 'javascripts'
             template = 'index.js.coffee'
-          when 'stylehseets'
-            template = 'index.css.sass'
+          when 'stylesheets'
+            template = 'index.css.scss'
         end
         # Add asset index file from ERB template
         unless template.nil?
@@ -86,12 +86,12 @@ namespace :wordly do
           end
 
           # Move current theme to vendor/themes
-          print "Moving current theme to vendor/themes"
+          puts "Moving current theme to vendor/themes"
           FileUtils.mkdir_p old_theme_dir
           ['javascripts','stylesheets','images'].each do |d|
             dir = File.join(assets_dir, d)
             if Dir.exists? dir
-              FileUtils.move dir, File.join(old_theme_dir,d)
+              FileUtils.move dir, old_theme_dir
             end
           end
         end
@@ -100,7 +100,7 @@ namespace :wordly do
         ['javascripts','stylesheets','images'].each do |d|
           dir = File.join(theme_dir, d)
           if Dir.exists? dir
-            FileUtils.move dir, File.join(assets_dir,d)
+            FileUtils.move dir, assets_dir
           end
         end
         FileUtils.rm_r theme_dir
