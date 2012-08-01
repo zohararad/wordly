@@ -89,18 +89,19 @@ namespace :wordly do
           puts "Moving current theme to vendor/themes"
           FileUtils.mkdir_p old_theme_dir
           ['javascripts','stylesheets','images'].each do |d|
-            dir = File.join(assets_dir, d)
+            dir = File.join(assets_dir, d, 'theme')
             if Dir.exists? dir
-              FileUtils.move dir, old_theme_dir
+              FileUtils.move dir, File.join(old_theme_dir,d)
             end
           end
         end
 
         # Move new theme to app/assets
+        puts "Moving #{theme_name} to app/assets"
         ['javascripts','stylesheets','images'].each do |d|
           dir = File.join(theme_dir, d)
           if Dir.exists? dir
-            FileUtils.move dir, assets_dir
+            FileUtils.move dir, File.join(assets_dir,d,'theme')
           end
         end
         FileUtils.rm_r theme_dir
