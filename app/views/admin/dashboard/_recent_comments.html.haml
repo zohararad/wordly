@@ -1,0 +1,16 @@
+- recent_comments = Comment.recent(5)
+- if recent_comments.any?
+  %table
+    %thead
+      %tr
+        %th Post
+        %th Author
+        %th Comment
+        %th Created on
+    %tbody
+      - recent_comments.each_with_index do |comment,index|
+        %tr{:class => (index % 2 == 0 ? 'even' : 'odd')}
+          %td= comment.post.title
+          %td= comment.author
+          %td= comment.comment
+          %td= comment.created_at.strftime(global_settings.date_format)

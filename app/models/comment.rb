@@ -18,6 +18,8 @@ class Comment < ActiveRecord::Base
 
   default_scope order('hierarchy asc')
 
+  scope :recent, lambda {|c| order('created_at desc').limit(c) }
+
   private
 
   def increment_comment_count

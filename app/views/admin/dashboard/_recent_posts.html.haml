@@ -1,0 +1,20 @@
+- recent_posts = Post.recent(5)
+- if recent_posts.any?
+  %table
+    %thead
+      %tr
+        %th Title
+        %th Author
+        %th # Comments
+        %th Updated on
+        %th Published
+        %th &nbsp;
+    %tbody
+      - recent_posts.each_with_index do |post,index|
+        %tr{:class => (index % 2 == 0 ? 'even' : 'odd')}
+          %td= post.title
+          %td= link_to post.author, admin_author_url(post.author)
+          %td= post.comment_count
+          %td= post.created_at.strftime(global_settings.date_format)
+          %td= post.published ? 'Yes' : 'No'
+          %td= link_to 'Edit', edit_admin_post_url(post)

@@ -35,6 +35,7 @@ class Post < ActiveRecord::Base
     where(['author_id = ?', author_id]).order('created_at desc').limit(10)
   }
 
+  scope :recent, lambda {|c| order('updated_at desc').limit(c) }
   # Returns either the post's excerpt or a stripped version of the post's content in case the excerpt is blank
   # @return [String] excerpt or stripped version of post content
   def post_excerpt
