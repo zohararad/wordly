@@ -12,6 +12,8 @@ class CreateCategories < ActiveRecord::Migration
 
     add_index :categories_posts, [:category_id, :post_id], :unique => false
     add_index :categories_posts, [:post_id, :category_id], :unique => false
+
+    Category.create! :name => 'General', :slug => 'general'
   end
 
   def down
