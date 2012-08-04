@@ -24,6 +24,7 @@ module PostsHelper
       content_tag(:ul, :class => 'comments-list') do
         comments.collect do |h|
           concat(content_tag(:li, :class => 'comment') do
+            concat(gravatar_image(h[:comment][:author_email]))
             concat(simple_format(h[:comment].comment, :class => 'comment-text'))
             concat(content_tag(:p ,{:class => 'comment-meta'}) do
               concat(['By %s' % h[:comment].author_name, h[:comment].created_at.strftime(global_settings.date_format)].join(', '))

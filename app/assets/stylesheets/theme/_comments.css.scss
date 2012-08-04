@@ -19,10 +19,12 @@
 
 .post-comments .comments-list{
   margin-bottom: 35px;
+  clear: left;
 }
 
 .comments-list .comment{
   padding: 15px 0;
+  clear: left;
 }
 
 .comments-list .comment + .comment{
@@ -38,6 +40,14 @@
   padding-left: 8px;
   margin-left: 7px;
   border-left: 1px solid $textColor;
+}
+
+.post-comments .gravatar {
+  border:1px solid #ccc;
+  float: left;
+  vertical-align: text-bottom;
+  padding: 1px;
+  margin: 4px 8px 0 0;
 }
 
 // comments form
