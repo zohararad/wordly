@@ -13,6 +13,11 @@ ActiveAdmin.register Author do
     f.buttons
   end
 
+  index do
+    column :full_name
+    default_actions
+  end
+
   controller do
 
     def update

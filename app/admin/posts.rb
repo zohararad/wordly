@@ -4,7 +4,6 @@ ActiveAdmin.register Post do
 
   index do
     column :title
-    column :slug
     column :author
     column :created_at
     default_actions
