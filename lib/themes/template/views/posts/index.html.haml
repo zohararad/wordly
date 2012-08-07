@@ -1,0 +1,19 @@
+%div.posts
+  - if @posts.any?
+    - for post in @posts
+      %article.post
+        %header
+          %h1.post-title= post.title
+        %p.post-excerpt= post.post_excerpt
+        %footer
+          %p
+            %span
+              By
+              = link_to post.author, author_url(post.author.slug)
+            %span= post.created_at.strftime(global_settings.date_format)
+            %span= link_to 'Read More...', post_url(post.slug)
+    = paginate @posts
+  - else
+    %p
+      Didn't find any posts.
+      = link_to 'Add one now', new_admin_post_url
