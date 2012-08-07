@@ -17,6 +17,13 @@ end
 
 module Wordly
   class Application < Rails::Application
+
+    # We load the settings.yml file before configuration
+    # so we can append the theme directory to asset pipeline
+    config.before_configuration do
+      Wordly.const_set(:CONFIG,YAML.load_file(Rails.root.join("config/settings.yml")))
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -65,7 +72,9 @@ module Wordly
 
     config.assets.paths << Rails.root.join('vendor','assets','stylesheets', 'active_admin')
     config.assets.paths << Rails.root.join('vendor','assets','javascripts', 'active_admin')
-    config.assets.paths << Rails.root.join('app','assets','images')
+    config.assets.paths << Rails.root.join('vendor','themes', Wordly::CONFIG['theme'], 'assets','stylesheets')
+    config.assets.paths << Rails.root.join('vendor','themes', Wordly::CONFIG['theme'], 'assets','javascripts')
+    config.assets.paths << Rails.root.join('vendor','themes', Wordly::CONFIG['theme'], 'assets','images')
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

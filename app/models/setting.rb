@@ -8,7 +8,8 @@ class Setting < ActiveRecord::Base
     :site_name => 'Another Wordly Site',
     :site_caption => 'Spreading the word of Wordly',
     :date_format => '%d-%B-%Y %H:%M',
-    :posts_per_page => 10
+    :posts_per_page => 10,
+    :theme => 'default'
   }
 
   private

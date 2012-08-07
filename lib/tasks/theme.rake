@@ -31,9 +31,9 @@ namespace :wordly do
         FileUtils.touch File.join(dir,'.gitkeep')
         case d
           when 'javascripts'
-            template = 'index.js.coffee'
+            template = 'theme.js.coffee'
           when 'stylesheets'
-            template = 'index.css.scss'
+            template = 'theme.scss'
         end
         # Add asset index file from ERB template
         unless template.nil?
@@ -64,11 +64,11 @@ namespace :wordly do
 
       if File.directory? theme_dir
         assets_dir = Rails.root.join('app','assets')
-        css_index = File.join(assets_dir,'stylesheets','theme','index.css.scss')
+        css_index = File.join(assets_dir,'stylesheets','theme','theme.scss')
 
         # Try to move current theme to vendor/themes
         if File.exists? css_index
-          # Find theme name from index.css.scss
+          # Find theme name from theme.scss
           m = File.read(css_index).match(/Wordly\stheme\:\s?([^\n\r]+)/)
           if m.nil?
             print "Could not find current theme name. Please enter a name: "
