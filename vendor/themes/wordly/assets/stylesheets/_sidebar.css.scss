@@ -25,3 +25,7 @@
 .sidebar-module .post-category{
   margin: 8px 0;
 }
+
+.sidebar-module .post-category a.active{
+  color:$textColor;
+}
