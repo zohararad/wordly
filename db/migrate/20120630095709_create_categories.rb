@@ -3,6 +3,7 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories, :force => true do |t|
       t.column :name, :string, :null => false, :limit => 200
       t.column :slug, :string, :null => false, :limit => 200
+      t.timestamps
     end
 
     create_table :categories_posts, :id => false, :force => true do |t|

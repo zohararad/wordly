@@ -1,3 +1,4 @@
+host: 'http://www.wordlyblog.com'
 site_name: 'Another Wordly Site'
 site_caption: 'Spreading the word of Wordly'
 date_format: '%d-%B-%Y %H:%M'

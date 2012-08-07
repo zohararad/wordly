@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(:version => 20120722175213) do
   add_index "authors", ["reset_password_token"], :name => "index_authors_on_reset_password_token", :unique => true
 
   create_table "categories", :force => true do |t|
-    t.string "name", :limit => 200, :null => false
-    t.string "slug", :limit => 200, :null => false
+    t.string   "name",       :limit => 200, :null => false
+    t.string   "slug",       :limit => 200, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "categories_posts", :id => false, :force => true do |t|
@@ -92,6 +94,10 @@ ActiveRecord::Schema.define(:version => 20120722175213) do
   end
 
   add_index "posts", ["author_id"], :name => "index_posts_on_author_id"
+
+  create_table "settings", :force => true do |t|
+    t.text "configuration", :limit => 2147483647, :null => false
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
