@@ -15,7 +15,7 @@ their blog with a ready-made theme, and hosting it on a Web host of their choice
 and where Wordly doesn't try to outshine it.
 
 However, many times, potential blog / site owners reach out to us, the developers, to build them a custom-made blog or personal
-Website, with all kinds of far-fetched requirements like 3rd-party login, Facebook and Twitter support or semantic search (how date they, right?).
+Website, with all kinds of far-fetched requirements like 3rd-party login, Facebook and Twitter support or semantic search (how dare they, right?).
 This is where Wordpress falls short, and Wordly tries to stand out. By using industry-standard, community-supported technologies, Wordly
 tries to make the process of modifying, customizing, extending and maintaining a blog fun and enjoyable, while helping you maintain healthy
 blood pressure levels.
