@@ -13,6 +13,7 @@ Wordly::Application.routes.draw do
   end
 
   match 'authors/:slug' => 'authors#show', :as => 'author'
+  match 'pages/:slug' => 'pages#show', :as => 'page'
 
   resources :categories, :only => [] do
     resources :posts, :only => [:index]
