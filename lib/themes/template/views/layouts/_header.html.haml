@@ -4,7 +4,7 @@
 %nav.site-nav
   %ul.site-nav-links
     %li.site-nav-link
-      = link_to 'Home', root_url, {:title => global_settings.site_name}
+      = link_to 'Home', root_url, {:title => global_settings.site_name, :class => ('active' if current?('/'))}
     - site_pages.each do |page|
       %li.site-nav-link
-        = link_to page.title, page_url(page.slug), {:title => page.title }
+        = link_to page.title, page_url(page.slug), {:title => page.title, :class => ('active' if current?(page)) }
