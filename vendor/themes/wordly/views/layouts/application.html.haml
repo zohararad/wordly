@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title= '%s | %s' % [global_settings.site_name, global_settings.site_caption]
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    %link{:rel => 'icon', :type => 'image/x-icon', :href => root_url + 'favicon.ico'}
+  %body
+    %div.main
+      %header.site-header
+        = render :partial => 'layouts/header'
+      %div.site-content.container
+        %div.row
+          %div.span8
+            = yield
+          %aside.site-sidebar.span4
+            = render :partial => 'layouts/sidebar'
+      %footer.site-footer
+        = render :partial => 'layouts/footer'

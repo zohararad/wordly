@@ -1,0 +1,12 @@
+%section.sidebar-module
+  %header
+    %h1 The Sidebar
+  %p Great words of sidebar wisdom!
+
+%section.sidebar-module
+  %header
+    %h1 Blog Pages
+  %ul.post-categories
+    - site_categories.each do |category|
+      %li.post-category
+        = link_to category.name, category_posts_url(category.slug), {:title => 'Posts in %s' % category.name, :class => ('active' if current?(category))}

@@ -1,14 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :global_settings, :site_categories
+  before_filter :prepend_view_paths
+  helper_method :global_settings, :site_categories, :site_pages
 
   def global_settings
-    @global_settings ||= Setting.first
-    @global_settings
+    Wordly::Settings
   end
 
   def site_categories
-    @categories ||= Category.all
+    @site_categories ||= Category.all
   end
+
+  def site_pages
+    @site_pages ||= Page.all
+  end
+
+  def prepend_view_paths
+    prepend_view_path Rails.root.join('vendor','themes',global_settings.theme,'views')
+  end
+
 end

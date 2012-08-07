@@ -1,0 +1,16 @@
+%section.content-area.author-details
+  %header
+    %h1= @author.full_name
+  - unless @author.about.nil?
+    %p= simple_format @author.about
+  - unless @author.website.nil?
+    %p
+      Visit me on
+      %a{:href => @author.website}= @author.website
+  - if @author_posts.any?
+    %h2 Latest Posts
+    %ul.author-posts
+      - for post in @author_posts
+        %li.author-post
+          %h3= link_to post.title, post_url(post.slug)
+          %p= 'Published %s' % post.created_at.strftime(global_settings.date_format)

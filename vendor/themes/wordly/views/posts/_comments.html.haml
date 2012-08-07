@@ -1,0 +1,22 @@
+%div.post-comments
+  %h3= 'Comments %s' % (post.comment_count > 0 ? '(%s)' % post.comment_count : '')
+  - if comments.any?
+    - reply_to_comment = get_reply_to_comment(comments)
+    = get_comments(comments, post)
+  = semantic_form_for(@comment, :html => {:id => 'post-comment-form', :class => 'post-comment-form'}) do |f|
+    - unless reply_to_comment.nil?
+      %h3= 'Reply to %s' % reply_to_comment.author_name
+    = f.inputs do
+      - if current_author.nil?
+        = f.input :author_name, :label => "Your Name", :required => true, :input_html => { :class => 'span5' }
+        = f.input :author_email, :label => "Your Email", :required => true, :as => :email, :input_html => { :class => 'span5' }
+        = f.input :author_website, :label => "Your Website", :as => :url, :input_html => { :class => 'span5' }
+      - else
+        %p
+          Reply as
+          %strong= ' %s' % current_author.full_name
+      = f.input :comment, :as => :text, :required => true, :input_html => { :rows => 5, :class => 'span6'  }
+      = f.input :uid, :as => :hidden, :value => post.uid
+      = f.input :comment_parent_id, :as => :hidden, :value => reply_to_comment.id unless reply_to_comment.nil?
+      = f.actions do
+        = f.action :submit, :button_html => { :class => "btn btn-info primary", :disable_with => 'Wait...', :value => 'Add Comment' }

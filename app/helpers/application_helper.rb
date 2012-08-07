@@ -7,4 +7,15 @@ module ApplicationHelper
     image_tag(image_src, :class => 'gravatar')
   end
 
+  def current?(o)
+    case o.class.name.to_s
+      when 'Page'
+        o == @page
+      when 'Category'
+        o == @category
+      when 'String'
+        request.path == o
+    end
+  end
+
 end

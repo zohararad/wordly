@@ -1,0 +1,31 @@
+.site-sidebar{
+  @include text-shadow(0 1px 0 white);
+}
+
+.sidebar-module{
+  padding: 15px 25px;
+  background-color: rgba(50,50,50, 0.1);
+  @include box-shadow(inset 0 0 6px rgba(100,100,100, 0.4));
+}
+
+.sidebar-module h1{
+  color: darken($blue, 25%);
+}
+
+.sidebar-module + .sidebar-module {
+  margin-top: 25px;
+}
+
+.sidebar-module .post-categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-module .post-category{
+  margin: 8px 0;
+}
+
+.sidebar-module .post-category a.active{
+  color:$textColor;
+}
