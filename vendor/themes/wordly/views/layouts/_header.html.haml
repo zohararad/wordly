@@ -5,6 +5,6 @@
   %ul.site-nav-links
     %li.site-nav-link
       = link_to 'Home', root_url, {:title => global_settings.site_name}
-    - site_categories.each do |category|
+    - site_pages.each do |page|
       %li.site-nav-link
-        = link_to category.name, category_posts_url(category.slug), {:title => 'Posts in %s' % category.name}
+        = link_to page.title, page_url(page.slug), {:title => page.title }

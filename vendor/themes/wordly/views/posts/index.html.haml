@@ -1,7 +1,7 @@
 %div.posts
   - if @posts.any?
     - for post in @posts
-      %article.post
+      %article.post.content-area
         %header
           %h1.post-title= post.title
         %p.post-excerpt= post.post_excerpt
