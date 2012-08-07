@@ -1,3 +1,4 @@
+# See https://github.com/kjvarga/sitemap_generator for information how to configure
 settings = YAML.load_file(Rails.root.join("config/settings.yml"))
 
 SitemapGenerator::Sitemap.create(:default_host => settings['host']) do
