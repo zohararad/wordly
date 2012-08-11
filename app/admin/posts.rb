@@ -31,6 +31,7 @@ ActiveAdmin.register Post do
         flash[:notice] = 'Post was created successfully'
         redirect_to edit_admin_post_path @post
       else
+        @tags = Tag.all
         render :new
       end
     end
