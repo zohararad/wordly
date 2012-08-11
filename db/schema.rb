@@ -95,10 +95,6 @@ ActiveRecord::Schema.define(:version => 20120722175213) do
 
   add_index "posts", ["author_id"], :name => "index_posts_on_author_id"
 
-  create_table "settings", :force => true do |t|
-    t.text "configuration", :limit => 2147483647, :null => false
-  end
-
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
